@@ -1,14 +1,32 @@
-import React from 'react';
-import './App.css';
+import React, {Component} from 'react'
+import './App.css'
 import Todo from './components/Todo'
 
 
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       todos: [],
     }
+
+    this.addTodo = this.addTodo.bind(this)
+    this.deleteTodo = this.deleteTodo.bind(this)
+    this.toggleChecked = this.toggleChecked.bind(this)
+  }
+
+  addTodo() {
+    this.setState({
+      todos: [...this.state.todos, ]
+    })
+  }
+
+  deleteTodo() {
+
+  }
+
+  toggleChecked() {
+
   }
 
   render() {
