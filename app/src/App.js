@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import './App.css'
 import Todo from './components/Todo'
 
+let id = 0
 
 class App extends Component {
   constructor(props) {
@@ -16,8 +17,12 @@ class App extends Component {
   }
 
   addTodo() {
+    const text = prompt("Add a TODO!")
     this.setState({
-      todos: [...this.state.todos, ]
+      todos: [
+        ...this.state.todos, 
+        {id: id++, text: text, checked: false}
+      ]
     })
   }
 
@@ -33,6 +38,15 @@ class App extends Component {
     return (
       <div>
         <h1>Todos</h1>
+        <div>
+          <h2>Todo Count</h2>          
+          <span>{this.state.todos.length || 0}</span>
+        </div>
+        <div>
+          <h2>Unchecked Count</h2>
+          <span>{0}</span>
+        </div>
+        <button onClick={this.addTodo}>Add Todo</button>
         <ul>
           {this.state.todos.map(todo => <Todo todo={todo} />)}
         </ul>
