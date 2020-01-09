@@ -1,3 +1,5 @@
+import React from 'react'
+
 const Todo = props => (
     <li>
         <span>{props.text}</span>
