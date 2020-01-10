@@ -12,7 +12,6 @@ class App extends Component {
     }
 
     this.addTodo = this.addTodo.bind(this)
-    this.deleteTodo = this.deleteTodo.bind(this)
     this.toggleChecked = this.toggleChecked.bind(this)
   }
 
@@ -26,11 +25,13 @@ class App extends Component {
     })
   }
 
-  deleteTodo() {
-
+  deleteTodo(id) {
+    this.setState({
+      todos: this.state.todos.filter(todo => todo.id !== id)
+    })
   }
 
-  toggleChecked() {
+  toggleChecked(id) {
 
   }
 
@@ -48,7 +49,10 @@ class App extends Component {
         </div>
         <button onClick={this.addTodo}>Add Todo</button>
         <ul>
-          {this.state.todos.map(todo => <Todo todo={todo} />)}
+          {this.state.todos.map(todo => 
+            <Todo todo={todo}
+            onDelete={() => this.deleteTodo(todo.id)} />
+          )}
         </ul>
       </div>
     )
