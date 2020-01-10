@@ -4,7 +4,7 @@ const Todo = props => (
     <li>
         <span>{props.todo.text}</span>
         <input type="checkbox" checked={props.todo.checked} />
-        <button>delete</button>
+        <button onClick={props.onDelete}>delete</button>
     </li>
 )
 
