@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import './stylesheets/App.css'
-import Todo from './components/Todo'
+import './App.css'
+import Todo from './components/Todo/Todo'
 
 
 class App extends Component {

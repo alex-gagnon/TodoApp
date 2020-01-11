@@ -1,13 +1,16 @@
 import React, {Component} from 'react'
-import AddTodo from './AddTodo.jsx'
+import AddTodo from '../AddTodo/AddTodo.jsx'
+import './Todo.css'
 
 const Todos = props => (
     <li id={"todo-" + props.todo.id}>
-        <span>{props.todo.text}</span>
-        <input type="checkbox" 
+        <span className="todo-text">{props.todo.text}</span>
+        <input className="todo-cb"
+        type="checkbox" 
         checked={props.todo.checked} 
         onChange={props.onToggle}/>
-        <button onClick={props.onDelete}>delete</button>
+        <button className="todo-btn" 
+        onClick={props.onDelete}>delete</button>
     </li>
 )
 
@@ -52,7 +55,7 @@ class Todo extends Component {
 
     render() {
         return (
-        <div class="todo-section">
+        <div className="todo-section">
             <div className="todo-section__content">            
                 <div className="todo-header">
                     <h1>Todos</h1>
@@ -70,17 +73,22 @@ class Todo extends Component {
                     </div>
                 </div>
                 <div className="todo-content">
-                    <ul className="todo-content__todo-list">
-                    {this.state.todos.map(todo => 
-                        <Todos className="todo-item"
-                        key={"todo" + todo.id}
-                        todo={todo}
-                        onDelete={() => this.deleteTodo(todo.id)}
-                        onToggle={() => this.toggleChecked(todo.id)} />
-                    )}
-                    </ul>
+                    <div className="todo-content__todo-list">                        
+                        <dl className="todo-list">
+                        {this.state.todos.map(todo => 
+                            <Todos className="todo-item"
+                            key={"todo" + todo.id}
+                            todo={todo}
+                            onDelete={() => this.deleteTodo(todo.id)}
+                            onToggle={() => this.toggleChecked(todo.id)} />
+                        )}
+                        </dl>
+                    </div>
                 </div>
-                <AddTodo onAdd={this.addTodo} />
+                <AddTodo
+                x={this.state.x}
+                y={this.state.y}
+                onAdd={this.addTodo} />
             </div>
         </div>
         )
