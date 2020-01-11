@@ -1,0 +1,40 @@
+/* Todo Button */
+
+.circle {
+    background-color: dodgerblue;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    position: relative;
+    margin: 4px;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: all ease-in-out 300ms;
+    box-shadow: 0px 37px 20px -15px rgba(0,0,0,0.4);
+  }
+  
+  .circle.plus:before, .circle.plus:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+  }
+  
+  .circle.plus:before {
+    width: 2px;
+    margin: 10px auto;
+  }
+  
+  .circle.plus:after {
+    margin: auto 10px;
+    height: 2px;
+  }
+  
+  .circle:hover {
+    box-shadow: 0px 37px 20px -15px rgba(0,0,0,0.2);
+    transform: translate(0px, -10px);
+  }

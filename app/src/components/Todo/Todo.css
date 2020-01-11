@@ -1,0 +1,35 @@
+.todo-section {
+    width: 60vw;
+  }
+  
+  .todo-section__content {
+    display: block;
+    height: 100vh;
+  }
+  
+  .todo-header {
+    text-align: center;
+  }
+  
+  .todo-content__counters {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .todo-counter {
+    text-align: center;
+  }
+
+  .todo-content__todo-list {
+    height: 50vh;
+  }
+
+  .todo-list {
+    list-style: none;
+    margin-left: 5px;
+  }
+
+  .todo-text, .todo-btn {
+    font-size: 1.2rem;
+  }
+  
