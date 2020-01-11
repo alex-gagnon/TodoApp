@@ -18,7 +18,6 @@ class Todo extends Component {
     }
 
     this.addTodo = this.addTodo.bind(this)
-    this.toggleChecked = this.toggleChecked.bind(this)
   }
 
   addTodo() {
@@ -52,25 +51,39 @@ class Todo extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Todos</h1>
-        <div>
-          <h2>Todo Count</h2>          
-          <span>{this.state.todos.length || 0}</span>
+    <div class="todo-section">
+        <div className="todo-section__content">            
+            <div className="todo-header">
+                <h1>Todos</h1>
+            </div>
+            <div className="todo-content">
+                <div className="todo-content__counters">                    
+                    <div className="todo-counter">
+                        <h2>Todo Count</h2>
+                        <span>{this.state.todos.length || 0}</span>
+                    </div>
+                    <div className="todo-counter">
+                        <h2>Unchecked Count</h2>
+                        <span>{this.state.todos.filter(todo => !todo.checked).length}</span>
+                    </div>
+                </div>
+            </div>
+            <div className="todo-btn">
+                <span className="circle plus"
+                onClick={this.addTodo}></span>
+            </div>
+            <div className="todo-content">
+                <ul className="todo-content__todo-list">
+                {this.state.todos.map(todo => 
+                    <Todos className="todo-item"
+                    key={"todo" + todo.id}
+                    todo={todo}
+                    onDelete={() => this.deleteTodo(todo.id)}
+                    onToggle={() => this.toggleChecked(todo.id)} />
+                )}
+                </ul>
+            </div>
         </div>
-        <div>
-          <h2>Unchecked Count</h2>
-          <span>{this.state.todos.filter(todo => !todo.checked).length}</span>
-        </div>
-        <button onClick={this.addTodo}>Add Todo</button>
-        <ul>
-          {this.state.todos.map(todo => 
-            <Todos key={"todo" + todo.id}
-            todo={todo}
-            onDelete={() => this.deleteTodo(todo.id)}
-            onToggle={() => this.toggleChecked(todo.id)} />
-          )}
-        </ul>
       </div>
     )
   }
