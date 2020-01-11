@@ -32,7 +32,16 @@ class App extends Component {
   }
 
   toggleChecked(id) {
-
+    this.setState({
+      todos: this.state.todos.map(todo => {
+        if (todo.id !== id) return todo
+        return {
+          id: todo.id,
+          text: todo.text,
+          checked: !todo.checked,
+        }
+      })
+    })
   }
 
   render() {
@@ -45,13 +54,14 @@ class App extends Component {
         </div>
         <div>
           <h2>Unchecked Count</h2>
-          <span>{0}</span>
+          <span>{this.state.todos.filter(todo => !todo.checked).length}</span>
         </div>
         <button onClick={this.addTodo}>Add Todo</button>
         <ul>
           {this.state.todos.map(todo => 
             <Todo todo={todo}
-            onDelete={() => this.deleteTodo(todo.id)} />
+            onDelete={() => this.deleteTodo(todo.id)}
+            onToggle={() => this.toggleChecked(todo.id)} />
           )}
         </ul>
       </div>
